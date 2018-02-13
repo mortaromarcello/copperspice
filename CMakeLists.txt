@@ -86,7 +86,7 @@ set(CPACK_PACKAGE_INSTALL_DIRECTORY ${CMAKE_INSTALL_PREFIX})
 set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY OFF)
 
 #
-SET(CPACK_DEBIAN_PACKAGE_DEPENDS "lifreetype6-dev (>= 2.5.2), libfontconfig-dev (>= 2.11.0), libglib2.0-dev (>= 2.42.1), libgstreamer0-10-dev (>= 0.10.36), libgstreamer-plugins-base0.10-dev (>= 0.10.36), libice-dev (>= 1.0.9), libaudio-dev (>= 1.9.4), libgl1-mesa-dev (>= 10.3.2), libc6-dev (>=2.19), libsm-dev (>= 1.2.2), libxcursor-dev (>= 1.1.14), libxext-dev (>= 1.3.3), libxfixes-dev (>= 5.0.1), libxi-dev (>= 1.7.4), libxinerama-dev (>= 1.1.3), libxrandr-dev (>= 1.4.2), libxrender-dev (>= 0.9.8), libx11-dev (>= 1.6.2)")
+SET(CPACK_DEBIAN_PACKAGE_DEPENDS "lifreetype6-dev (>= 2.5.2), libfontconfig-dev (>= 2.11.0), libglib2.0-dev (>= 2.42.1), libgstreamer0.10-dev (>= 0.10.36), libgstreamer-plugins-base0.10-dev (>= 0.10.36), libice-dev (>= 1.0.9), libaudio-dev (>= 1.9.4), libgl1-mesa-dev (>= 10.3.2), libc6-dev (>=2.19), libsm-dev (>= 1.2.2), libxcursor-dev (>= 1.1.14), libxext-dev (>= 1.3.3), libxfixes-dev (>= 5.0.1), libxi-dev (>= 1.7.4), libxinerama-dev (>= 1.1.3), libxrandr-dev (>= 1.4.2), libxrender-dev (>= 0.9.8), libx11-dev (>= 1.6.2)")
 SET(CPACK_GENERATOR "DEB")
 SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "Mortaro Marcello")
 #
