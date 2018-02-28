@@ -40,6 +40,14 @@ class QStringParser;
 template <typename S>
 class QRegularExpression;
 
+#ifdef Q_OS_DARWIN
+   using CFStringRef = const struct __CFString *;
+
+#  ifdef __OBJC__
+   @class NSString;
+#  endif
+#endif
+
 class Q_CORE_EXPORT QChar32Arrow : public CsString::CsCharArrow
 {
    public:
@@ -265,19 +273,16 @@ class Q_CORE_EXPORT QString8 : public CsString::CsString
       // internal
       QString8(const CsString::CsString &other)
          : CsString::CsString(other)
-      {
-      }
+      { }
 
       // internal
       QString8(CsString::CsString &&other)
          : CsString::CsString(std::move(other))
-      {
-      }
+      { }
 
       QString8(QStringView8 str)
          : CsString::CsString( str )
-      {
-      }
+      { }
 
       ~QString8() = default;
 
@@ -925,6 +930,17 @@ class Q_CORE_EXPORT QString8 : public CsString::CsString
          return CsString::CsString::operator[](index);
       }
 
+#if defined(Q_OS_DARWIN)
+    static QString8 fromCFString(CFStringRef string);
+    CFStringRef toCFString() const;
+
+#  if defined(__OBJC__)
+    static QString8 fromNSString(const NSString *string);
+    NSString *toNSString() const;
+#  endif
+
+#endif
+
    private:
       const_iterator cs_internal_find_fast(QChar32 c, const_iterator iter_begin) const;
       const_iterator cs_internal_find_fast(const QString8 &str, const_iterator iter_begin) const;
@@ -936,11 +952,8 @@ class Q_CORE_EXPORT QString8 : public CsString::CsString
       }
 };
 
-#if ! defined(QT_NO_DATASTREAM)
-   Q_CORE_EXPORT QDataStream &operator<<(QDataStream &, const QString8 &);
-   Q_CORE_EXPORT QDataStream &operator>>(QDataStream &, QString8 &);
-#endif
-
+Q_CORE_EXPORT QDataStream &operator<<(QDataStream &, const QString8 &);
+Q_CORE_EXPORT QDataStream &operator>>(QDataStream &, QString8 &);
 
 // free functions, comparisons for string literals
 inline bool operator==(const QString8 &str1, const QString8 &str2)

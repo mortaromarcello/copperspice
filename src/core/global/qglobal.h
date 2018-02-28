@@ -682,11 +682,11 @@ inline T *q_check_ptr(T *p)
    return p;
 }
 
-#if (defined(Q_CC_GNU) && !defined(Q_OS_SOLARIS)) || defined(Q_CC_HPACC)
+#if (defined(Q_CC_GNU) && ! defined(Q_OS_SOLARIS))
 #  define Q_FUNC_INFO            __PRETTY_FUNCTION__
 
 #else
-#   if defined(Q_OS_SOLARIS) || defined(Q_CC_XLC)
+#   if defined(Q_OS_SOLARIS)
 #      define Q_FUNC_INFO        __FILE__ "(line number unavailable)"
 
 #   else
@@ -1111,7 +1111,7 @@ for (variable : container)
 #  endif
 #endif
 
-// raw pointer ( QEasingCurvePrivate, QStringMatcherPrivate, maybe a few other classes 12/28/2013 )
+// raw pointer ( QEasingCurvePrivate, maybe a few other classes 12/28/2013 )
 template <typename T>
 T *qGetPtrHelper(T *ptr)
 {

@@ -28,7 +28,7 @@
 #include <qnetworkproxy.h>
 #include <qauthenticator_p.h>
 
-#if ! defined(QT_NO_NETWORKPROXY) && ! defined(QT_NO_HTTP)
+#if ! defined(QT_NO_NETWORKPROXY)
 
 class QTcpSocket;
 class QHttpNetworkReply;
@@ -174,7 +174,7 @@ class QHttpSocketEngineHandler : public QSocketEngineHandler
    virtual QAbstractSocketEngine *createSocketEngine(QAbstractSocket::SocketType socketType,
                   const QNetworkProxy &, QObject *parent) override;
 
-   virtual QAbstractSocketEngine *createSocketEngine(qintptr socketDescripter, QObject *parent) override;
+   virtual QAbstractSocketEngine *createSocketEngine(qintptr socketDescriptor, QObject *parent) override;
 };
 #endif
 

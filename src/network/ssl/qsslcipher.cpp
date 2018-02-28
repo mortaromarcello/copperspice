@@ -34,7 +34,7 @@ QSslCipher::QSslCipher()
 QSslCipher::QSslCipher(const QString &name)
    : d(new QSslCipherPrivate)
 {
-   foreach (const QSslCipher &cipher, QSslConfiguration::supportedCiphers()) {
+   for (const QSslCipher &cipher : QSslConfiguration::supportedCiphers()) {
       if (cipher.name() == name) {
          *this = cipher;
          return;
@@ -45,7 +45,7 @@ QSslCipher::QSslCipher(const QString &name)
 QSslCipher::QSslCipher(const QString &name, QSsl::SslProtocol protocol)
    : d(new QSslCipherPrivate)
 {
-   for (const QSslCipher & cipher : QSslConfiguration::supportedCiphers()) {
+   for (const QSslCipher &cipher : QSslConfiguration::supportedCiphers()) {
       if (cipher.name() == name && cipher.protocol() == protocol) {
          *this = cipher;
          return;
@@ -121,9 +121,12 @@ QSsl::SslProtocol QSslCipher::protocol() const
 
 QDebug operator<<(QDebug debug, const QSslCipher &cipher)
 {
-   debug << "QSslCipher(name=" << qPrintable(cipher.name())
-         << ", bits=" << cipher.usedBits()
-         << ", proto=" << qPrintable(cipher.protocolString())
+   // QDebugStateSaver saver(debug);
+   // debug.resetFormat().nospace().noquote();
+
+   debug << "QSslCipher(name=" << cipher.name()
+         << ", bits="  << cipher.usedBits()
+         << ", proto=" << cipher.protocolString()
          << ')';
    return debug;
 }

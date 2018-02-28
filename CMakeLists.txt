@@ -170,6 +170,14 @@ set_package_properties(OpenSSL PROPERTIES
     TYPE RECOMMENDED
 )
 
+find_package(Security)
+set_package_properties(Security PROPERTIES
+    PURPOSE "Required for HTTPS support"
+    DESCRIPTION "Support for secure network communications using Secure Trasnport for SSL and TLS"
+    URL "https://developer.apple.com/documentation/security/secure_transport"
+    TYPE RECOMMENDED
+)
+
 find_package(ZLIB)
 set_package_properties(ZLIB PROPERTIES
     PURPOSE "Required for compression support"
