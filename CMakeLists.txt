@@ -165,7 +165,7 @@ message(STATUS "Search for packages:\n")
 find_package(OpenSSL 1.0)
 set_package_properties(OpenSSL PROPERTIES
     PURPOSE "Required for HTTPS support"
-    DESCRIPTION "Support for secure network communications (SSL and TLS)"
+    DESCRIPTION "Support for secure network communications using OpenSSL for SSL and TLS"
     URL "http://openssl.org"
     TYPE RECOMMENDED
 )
